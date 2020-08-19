@@ -5,6 +5,7 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // Define paths for Exspress config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -97,11 +98,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
-
-app.get('/weather', (req, res) => {
-    // All query string key/value pairs are on req.query
-    res.send('You provided "' + req.query.address + '" as the address.')
-    })
